@@ -1,5 +1,7 @@
 package com.said.newsapiexample.Adapter;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.said.newsapiexample.Details.News;
 import com.said.newsapiexample.R;
 import com.squareup.picasso.Picasso;
-
-import java.util.ArrayList;
 
 public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.MyViewHolder> {
 
@@ -39,6 +39,19 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
         holder.newSite.setText(news.getNews().get(position).author);
         holder.newsDate.setText(news.getNews().get(position).newsDate.substring(11,16));
         Picasso.get().load(news.getNews().get(position).imageUrl).into(holder.newsImage);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Uri uri = Uri.parse(news.getNews().get(position).url);
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+
+                holder.itemView.getContext().startActivity(intent);
+            }
+        });
+
+
 
     }
 

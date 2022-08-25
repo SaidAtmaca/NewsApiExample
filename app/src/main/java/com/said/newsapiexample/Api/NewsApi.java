@@ -10,6 +10,6 @@ import retrofit2.http.GET;
 public interface NewsApi {
 
 
-    @GET("v2/top-headlines?country=tr&apiKey=API_KEY")
+    @GET("v2/top-headlines?country=tr&apiKey=d09f671f61444055891e458e5d266c7e")
     Call<News> getData();
 }
